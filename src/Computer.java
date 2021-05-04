@@ -4,16 +4,11 @@ import java.util.Random;
 
 public class Computer implements Player {
   private Random rand = new Random();
-  private int aiHand;
-
-  public int getMove() {
-    this.aiHand = rand.nextInt() + 3;
-    return aiHand;
-  }
+  private int nr;
 
 
   @Override
-  public void getMove(int hand) {
-
+  public int getMove() {
+   return nr = rand.nextInt();
   }
 }
