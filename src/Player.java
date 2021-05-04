@@ -1,12 +1,11 @@
-package Players;
-
 interface Player {
   String hand = null;
-  int score = 0;
-
+  int point = 0;
 
   int getMove();
 
+  int getPoint();
 
+  int addPoint();
 
 }
