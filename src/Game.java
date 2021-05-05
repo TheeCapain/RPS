@@ -1,7 +1,7 @@
 public class Game {
     UI ui = new UI();
-    Computer AI = new Computer();
-    Human human = new Human();
+    Player AI = new Computer();
+    Player human = new Human();
 
     //Entire game consists of:
     //Setting human players name
@@ -9,12 +9,10 @@ public class Game {
     //displays the score
 
     public void playGame() {
-        ui.printString("What is your name? ");
-        human.setName(ui.scanString());
-        ui.printString("Hello " + human.getName());
+
         boolean run = true;
         do {
-            playRound(nrToHand(AI.takeTurn()), nrToHand(human.setMove()));
+            playRound();
             if (AI.getPoint() == 3 || human.getPoint() == 3) {
                 run = false;
             }
@@ -42,35 +40,12 @@ public class Game {
             ui.printString("Human wins the round");
             human.addPoint();
         }
-        displayScore();
+        displayResult();
     }
 
     //Pretty self-explanatory
-    public void displayScore() {
+    public void displayResult() {
         ui.printString("Human score: " + human.getPoint() + " AI score: " + AI.getPoint());
 
-    }
-
-    //Converts input to hand;
-    public String nrToHand() {
-        String hand = "";
-
-        switch (human.takeTurn()) {
-            case "Rock" -> {
-                ui.printString("Rock");
-                hand = "Rock";
-            }
-            case "Paper" -> {
-                ui.printString("Paper");
-                hand = "Paper";
-            }
-            case "Scissors" -> {
-                ui.printString("Scissors");
-                hand = "Scissors";
-            }
-            default -> ui.printString("Put in an int between 1-3");
-
-        }
-        return hand;
     }
 }

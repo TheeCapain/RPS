@@ -1,8 +1,8 @@
 import java.util.Random;
 
 public class Computer implements Player {
-    private String move;
     private int points;
+    private String name;
 
 
     @Override
@@ -15,6 +15,18 @@ public class Computer implements Player {
     @Override
     public int addPoint() {
         return points++;
+    }
+
+    @Override
+    public String setName(String name) {
+        this.name = name;
+        return name;
+    }
+
+
+    @Override
+    public String getName() {
+        return null;
     }
 
     @Override

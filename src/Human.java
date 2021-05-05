@@ -1,29 +1,52 @@
 public class Human implements Player {
-private String name;
-private int points;
-UI ui = new UI();
-  public void setName(String name) {
-    this.name = name;
+    private String name;
+    private int points;
+    UI ui = new UI();
 
-  }
+    public String setName(String name) {
+        this.name = name;
+        return name;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public String getName() {
+        return name;
+    }
 
-   @Override
-  public String takeTurn() {
-     String move = ui.scanString();
-     return move;
-  }
+    public String humanMove() {
+        String hand = "";
 
-  @Override
-  public int addPoint() {
-    return points++;
-  }
+        switch (takeTurn()) {
+            case "Rock" -> {
+                ui.printString("Rock");
+                hand = "Rock";
+            }
+            case "Paper" -> {
+                ui.printString("Paper");
+                hand = "Paper";
+            }
+            case "Scissors" -> {
+                ui.printString("Scissors");
+                hand = "Scissors";
+            }
+            default -> ui.printString("Put in an int between 1-3");
 
-  @Override
-  public int getPoint() {
-    return points;
-  }
+        }
+        return hand;
+    }
+
+    @Override
+    public String takeTurn() {
+        String move = ui.scanString();
+        return move;
+    }
+
+    @Override
+    public int addPoint() {
+        return points++;
+    }
+
+    @Override
+    public int getPoint() {
+        return points;
+    }
 }

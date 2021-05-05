@@ -5,4 +5,8 @@ interface Player {
 
   int addPoint();
 
+  String setName(String name);
+
+  String getName();
+
 }
