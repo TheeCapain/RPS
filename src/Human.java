@@ -12,17 +12,10 @@ UI ui = new UI();
   }
 
    @Override
-  public int getMove() {
-    return getMove();
-
+  public String takeTurn() {
+     String move = ui.scanString();
+     return move;
   }
-
-
-  public int setMove(){
-    int move;
-    return move = ui.scanInt();
-  }
-
 
   @Override
   public int addPoint() {

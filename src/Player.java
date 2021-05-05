@@ -1,8 +1,5 @@
 interface Player {
-  String hand = null;
-  int point = 0;
-
-  int getMove();
+  String takeTurn();
 
   int getPoint();
 

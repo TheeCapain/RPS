@@ -1,23 +1,24 @@
 import java.util.Random;
 
 public class Computer implements Player {
-  private Random rand = new Random();
-  private int nr;
-  private int points;
+    private String move;
+    private int points;
 
 
-  @Override
-  public int getMove() {
-   return nr = rand.nextInt();
-  }
+    @Override
+    public String takeTurn() {
+        String[] handMoves = {"Rock", "Paper", "Scissors"};
+        String aiMove = handMoves[new Random().nextInt(handMoves.length)];
+        return aiMove;
+    }
 
-  @Override
-  public int addPoint() {
-    return points++;
-  }
+    @Override
+    public int addPoint() {
+        return points++;
+    }
 
-  @Override
-  public int getPoint() {
-    return points;
-  }
+    @Override
+    public int getPoint() {
+        return points;
+    }
 }
