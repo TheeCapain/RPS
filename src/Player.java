@@ -3,12 +3,8 @@ interface Player {
 
   int getPoint();
 
-  int addPoint();
+  void addPoint();
 
-  int resetPoints();
-
-  String setName(String name);
-
-  String getName();
+  void resetPoints();
 
 }
