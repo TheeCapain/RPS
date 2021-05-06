@@ -5,8 +5,7 @@ public class Human implements Player {
 
   @Override
   public String takeTurn() {
-    String move = ui.scanString();
-    return move;
+    return ui.scanString();
   }
 
   @Override
