@@ -84,8 +84,8 @@ public class Game {
         if (player2.equals(Hand.SCISSORS) && player1.equals(Hand.PAPER) || player2.equals(Hand.PAPER) && player1.equals(Hand.ROCK) ||
                 player2.equals(Hand.ROCK) && player1.equals(Hand.SCISSORS)) {
             ui.printString("----------------------------------------");
-            ui.ANSI_RED("Your move: " + player1 + " AI move: " + player2 );
-            ui.ANSI_RED("Computer wins the round" );
+            ui.ANSI_RED("Your move: " + player1 + " AI move: " + player2);
+            ui.ANSI_RED("Computer wins the round");
             ui.printString("----------------------------------------");
             AI.addPoint();
 
@@ -111,8 +111,7 @@ public class Game {
         ui.printString("Your score: " + human.getPoint() + " AI score: " + AI.getPoint());
     }
 
-    //Should possibly be in class Human
-    //Converts the hand from string to type Hand
+    //Converts the takeTurn from string to type Hand
     public Hand getHand(String move) {
         Hand hand = null;
         switch (move) {
