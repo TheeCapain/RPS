@@ -6,32 +6,41 @@ public class Game {
 
 
   public void run() {
-    showMenu();
-  }
-
-  public void showMenu() {
     ui.ANSI_BLUE("Welcome to Rock Paper scissors");
     menu.printMenu();
     pickMenuOption();
   }
 
+
   public void pickMenuOption() {
     int choice = ui.scanInt();
-    switch (choice) {
-      case 1 -> {
-        ui.printString("Enter either Rock, Paper or Scissor");
-        playGame();
+    boolean run =true;
+    do {
+      switch (choice) {
+        case 1 -> {
+          ui.printString("Enter either Rock, Paper or Scissor");
+          playGame();
 
+        }
+        case 2 -> {
+          ui.ANSI_YELLOW("many stats, such wow");
+          run();
+        }
+        case 3 -> {
+          ui.printString("The machines have won");
+         run();
+        }
+        case 4 -> {
+          ui.ANSI_RED("OK....Bye");
+          run =false;
+        }
       }
-      case 2 -> {
-        ui.ANSI_YELLOW("many stats, such wow");
-        showMenu();
-      }
-      case 3 -> AIvsAI();
-      case 4 -> ui.ANSI_RED("OK....Bye");
+    } while(run);
 
-    }
+
+
   }
+
 
   //Entire game consists of:
   //Setting human players name
@@ -61,33 +70,7 @@ public class Game {
 
     checkWinner();
     resetPoints();
-    showMenu();
-  }
-
-  public void AIvsAI() {
-    boolean run = true;
-    do {
-      //Player gets Hand move
-      Hand player1 = getHand(AI.takeTurn());
-      while (player1 == null) {
-        player1 = getHand(AI.takeTurn());
-      }
-      Hand player2 = getHand(AI.takeTurn());
-      while (player2 == null) {
-        //AI randomizes move
-        player2 = getHand(AI.takeTurn());
-      }
-
-      playRound(player1, player2);
-      if (AI.getPoint() == 3 || AI.getPoint() == 3) {
-        run = false;
-      }
-    }
-    while (run);
-
-    checkWinner();
-    resetPoints();
-    showMenu();
+    run();
   }
 
   //Part of stats?
@@ -122,14 +105,13 @@ public class Game {
       ui.printString("It's a tie");
 
     } else {
-      ui.ANSI_GREEN("Your move: " + player1 + " AI move: " + player2+ "\n");
+      ui.ANSI_GREEN("Your move: " + player1 + " AI move: " + player2 + "\n");
       ui.ANSI_GREEN("You win the round" + "\n");
       human.addPoint();
     }
     displayResult();
 
   }
-
 
   //Pretty self-explanatory
   public void displayResult() {

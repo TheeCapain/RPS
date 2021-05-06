@@ -20,7 +20,6 @@ public class Computer implements Player {
     points = 0;
   }
 
-
   @Override
   public int getPoint() {
     return points;
