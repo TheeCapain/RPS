@@ -1,3 +1,3 @@
-public enum Hand {
+enum Hand {
     ROCK,PAPER,SCISSORS;
 }

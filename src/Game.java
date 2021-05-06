@@ -17,7 +17,6 @@ public class Game {
                 run = false;
             }
         } while (run);
-
     }
 
     //One round consists of:
@@ -28,9 +27,10 @@ public class Game {
     public void playRound() {
 
         if (AI.takeTurn().equals("Rock") && human.takeTurn().equals("Scissors") || AI.takeTurn().equals("Paper") || human.takeTurn().equals("Rock") || AI.takeTurn().equals("Scissors") && human.takeTurn().equals("Paper")) {
-            ui.printString("Human move: " + human.takeTurn()+ " AI move: " + AI.takeTurn());
+            ui.printString("Human move: " + human.takeTurn() + " AI move: " + AI.takeTurn());
             ui.printString("Computer wins the round");
             AI.addPoint();
+
         } else if (AI.takeTurn().equals(human.takeTurn())) {
             ui.printString("Human move: " + human.takeTurn() + " AI move: " + AI.takeTurn());
             ui.printString("Its a tie");
