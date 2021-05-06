@@ -24,7 +24,16 @@ public class Human implements Player {
     }
 
     @Override
+    public int resetPoints() {
+        points = 0;
+        return 0;
+    }
+
+
+    @Override
     public int getPoint() {
         return points;
     }
+
+
 }

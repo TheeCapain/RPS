@@ -5,6 +5,8 @@ interface Player {
 
   int addPoint();
 
+  int resetPoints();
+
   String setName(String name);
 
   String getName();

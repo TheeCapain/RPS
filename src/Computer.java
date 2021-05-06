@@ -7,8 +7,7 @@ public class Computer implements Player {
 
     @Override
     public String takeTurn() {
-        Hand hand = Hand.PAPER;
-        String[] handMoves = {"Rock", "Paper", "Scissors"};
+        String[] handMoves = {"Rock", "Paper", "Scissor"};
         String aiMove = handMoves[new Random().nextInt(handMoves.length)];
         return aiMove;
     }
@@ -17,6 +16,13 @@ public class Computer implements Player {
     public int addPoint() {
         return points++;
     }
+
+    @Override
+    public int resetPoints() {
+        points = 0;
+        return points;
+    }
+
 
     @Override
     public String setName(String name) {
@@ -33,4 +39,5 @@ public class Computer implements Player {
     public int getPoint() {
         return points;
     }
+
 }
