@@ -21,10 +21,7 @@ public class UI {
     }
 
     public void ANSI_YELLOW(String message){
-        System.out.println("\\u001b[33m" + message +ANSI_RESET);
-    }
-    public int scanInt() {
-        return scan.nextInt();
+        System.out.println("\u001b[33m" + message +ANSI_RESET);
     }
 
     public String scanString() {

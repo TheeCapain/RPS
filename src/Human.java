@@ -22,6 +22,4 @@ public class Human implements Player {
   public int getPoint() {
     return points;
   }
-
-
 }

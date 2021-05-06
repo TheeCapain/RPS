@@ -4,9 +4,11 @@ public class Menu {
 
 
   public void printMenu() {
+    ui.printString("----------------------------------------");
     for (int i = 0; i < menuList.length; i++) {
       ui.printString(menuList[i]);
     }
+    ui.printString("----------------------------------------");
   }
 
 
