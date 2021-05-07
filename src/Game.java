@@ -27,8 +27,10 @@ public class Game {
         }
         case 4 -> ui.ANSI_RED("OK....Bye >:(");
 
-        default ->{ ui.printString("Enter nr between 1 and 4");
-        run();}
+        default -> {
+          ui.printString("Enter nr between 1 and 4");
+          run();
+        }
 
       }
       isRunning = false;
@@ -95,7 +97,7 @@ public class Game {
       ui.ANSI_YELLOW("It's a tie");
       ui.printString("----------------------------------------");
 
-    }else if (player1.equals(Hand.ORDER_66)){
+    } else if (player1.equals(Hand.ORDER_66)) {
       ui.printString("----------------------------------------");
       ui.ANSI_RED("All the Jedi have been executed");
       ui.ANSI_GREEN("You win the round");
@@ -128,7 +130,7 @@ public class Game {
 
       case "Scissor", "s", "S", "3" -> hand = Hand.SCISSORS;
 
-      case "Execute order 66" -> hand =Hand.ORDER_66;
+      case "Execute order 66" -> hand = Hand.ORDER_66;
 
       case "9", "Back", "b", "B" -> run();
 
