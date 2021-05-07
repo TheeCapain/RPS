@@ -40,7 +40,7 @@ public class Game {
         boolean run = true;
         do {
             ui.printString("----------------------------------------");
-            ui.printString("Enter Rock, Paper or scissors");
+            ui.printString("Enter R or 1 for Rock, P or 2 for Paper or S or 3 for Scissors");
             //Player gets Hand move
             Hand player1 = getHand(human.takeTurn());
 
@@ -84,20 +84,20 @@ public class Game {
         if (player2.equals(Hand.SCISSORS) && player1.equals(Hand.PAPER) || player2.equals(Hand.PAPER) && player1.equals(Hand.ROCK) ||
                 player2.equals(Hand.ROCK) && player1.equals(Hand.SCISSORS)) {
             ui.printString("----------------------------------------");
-            ui.ANSI_RED("Your move: " + player1 + " AI move: " + player2);
+            ui.ANSI_RED("Your move: " + player1 + "\nAI move: " + player2);
             ui.ANSI_RED("Computer wins the round");
             ui.printString("----------------------------------------");
             AI.addPoint();
 
         } else if (player1.equals(player2)) {
             ui.printString("----------------------------------------");
-            ui.printString("Your move: " + player1 + " AI move: " + player2);
+            ui.printString("Your move: " + player1 + "\nAI move: " + player2);
             ui.printString("It's a tie");
             ui.printString("----------------------------------------");
 
         } else {
             ui.printString("----------------------------------------");
-            ui.ANSI_GREEN("Your move: " + player1 + " AI move: " + player2 + "\n");
+            ui.ANSI_GREEN("Your move: " + player1 + "\nAI move: " + player2 + "\n");
             ui.ANSI_GREEN("You win the round");
             ui.printString("----------------------------------------");
             human.addPoint();
