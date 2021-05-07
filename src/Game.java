@@ -10,31 +10,29 @@ public class Game {
     pickMenuOption();
   }
 
-  //Rykkes til Menu?
   public void pickMenuOption() {
-    String choice = ui.scanString();
     boolean isRunning = true;
-    do {
+    int choice = ui.scanInt();
+
+    while (isRunning) {
       switch (choice) {
-        case "1" -> playGame();
-        case "2" -> {
+        case 1 -> playGame();
+        case 2 -> {
           ui.ANSI_YELLOW("many stats, such wow");
           run();
         }
-        case "3" -> {
+        case 3 -> {
           ui.printString("The machines have won");
           run();
         }
-        case "4" -> {
-          ui.ANSI_RED("OK....Bye");
-          isRunning = false;
-        }
-        default -> {
-          ui.printString("Enter nr between 1 and 4");
-          run();
-        }
+        case 4 -> ui.ANSI_RED("OK....Bye >:(");
+
+        default ->{ ui.printString("Enter nr between 1 and 4");
+        run();}
+
       }
-    } while (isRunning);
+      isRunning = false;
+    }
   }
 
   public void playGame() {
@@ -87,7 +85,7 @@ public class Game {
         || player2.equals(Hand.ROCK) && player1.equals(Hand.SCISSORS)) {
       ui.printString("----------------------------------------");
       ui.printString("Your move: " + player1 + "\nAI move: " + player2);
-      ui.ANSI_RED("Computer wins the round");
+      ui.ANSI_RED("AI wins the round");
       ui.printString("----------------------------------------");
       AI.addPoint();
 
@@ -96,6 +94,13 @@ public class Game {
       ui.printString("Your move: " + player1 + "\nAI move: " + player2);
       ui.ANSI_YELLOW("It's a tie");
       ui.printString("----------------------------------------");
+
+    }else if (player1.equals(Hand.ORDER_66)){
+      ui.printString("----------------------------------------");
+      ui.ANSI_RED("All the Jedi have been executed");
+      ui.ANSI_GREEN("You win the round");
+      ui.printString("----------------------------------------");
+      human.addPoint();
 
     } else {
       ui.printString("----------------------------------------");
@@ -122,6 +127,8 @@ public class Game {
       case "Paper", "p", "P", "2" -> hand = Hand.PAPER;
 
       case "Scissor", "s", "S", "3" -> hand = Hand.SCISSORS;
+
+      case "Execute order 66" -> hand =Hand.ORDER_66;
 
       case "9", "Back", "b", "B" -> run();
 
