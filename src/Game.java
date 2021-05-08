@@ -8,6 +8,10 @@ public class Game {
     public void run() {
         ui.ANSI_BLUE("Welcome to Rock Paper scissors");
         menu.printMenu();
+        menuChoice();
+    }
+
+    public void menuChoice() {
         boolean isRunning = true;
         int choice = ui.scanInt();
 
@@ -72,10 +76,10 @@ public class Game {
     //Part of stats?
     public void checkWinner() {
         if (AI.getPoint() == 3) {
-            ui.printString("AI won \n");
+            ui.printString("AI won ");
 
         } else {
-            ui.printString("You won! \n");
+            ui.printString("You won!");
         }
     }
 
@@ -100,7 +104,7 @@ public class Game {
             ui.ANSI_YELLOW("It's a tie");
             ui.printString("----------------------------------------");
 
-        } else if (player1.equals(Hand.ORDER_66)) {
+        } else if (player1.equals(Hand.SPECIAL)) {
             ui.printString("----------------------------------------");
             ui.ANSI_RED("All the Jedi have been executed");
             ui.ANSI_GREEN("You win the round");
@@ -133,7 +137,7 @@ public class Game {
 
             case "Scissor", "s", "S", "3" -> hand = Hand.SCISSORS;
 
-            case "Execute order 66" -> hand = Hand.ORDER_66;
+            case "Execute order 66" -> hand = Hand.SPECIAL;
 
             case "9", "Back", "b", "B" -> {
                 resetPoints();
