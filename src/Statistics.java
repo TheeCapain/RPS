@@ -1,6 +1,6 @@
 public class Statistics {
-    private final int[] mostUsedHand = new int[3];
-    private final String[] hands = {"Rock", "Paper", "Scissors"};
+    private final int[] mostUsedHand = new int[4];
+    private final String[] hands = {"Rock", "Paper", "Scissors","Secret weapon"};
     UI ui = new UI();
 
     public void countUsedHand(Hand hand) {

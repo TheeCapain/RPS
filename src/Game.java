@@ -8,10 +8,6 @@ public class Game {
     public void run() {
         ui.ANSI_BLUE("Welcome to Rock Paper scissors");
         menu.printMenu();
-        pickMenuOption();
-    }
-
-    public void pickMenuOption() {
         boolean isRunning = true;
         int choice = ui.scanInt();
 
@@ -37,6 +33,7 @@ public class Game {
             isRunning = false;
         }
     }
+
 
     public void playGame() {
         boolean run = true;
@@ -67,6 +64,7 @@ public class Game {
         while (run);
 
         checkWinner();
+        stats.printMostUsedHands();
         resetPoints();
         run();
     }
