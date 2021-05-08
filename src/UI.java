@@ -32,4 +32,9 @@ public class UI {
         return scan.nextInt();
     }
 
+    public void printStats(String message, int nr){
+        System.out.println(message+ nr);
+
+    }
+
 }
