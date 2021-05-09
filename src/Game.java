@@ -38,7 +38,7 @@ public class Game {
         }
     }
 
-
+//SÆTTER SPILLET I GANG
     public void playGame() {
         boolean run = true;
         ui.printString("First to get 3 points, win!");
@@ -73,7 +73,7 @@ public class Game {
         run();
     }
 
-    //Part of stats?
+    //FINDER EN VINDER
     public void checkWinner() {
         if (AI.getPoint() == 3) {
             ui.printString("AI won ");
@@ -82,12 +82,12 @@ public class Game {
             ui.printString("You won!");
         }
     }
-
+//RESETTER SPILLET TIL NÆSTE RUNDE
     public void resetPoints() {
         human.resetPoints();
         AI.resetPoints();
     }
-
+//SØRGER FOR AT SPILLERNE HAR HVER DERES TUR
     public void playRound(Hand player1, Hand player2) {
         if (player2.equals(Hand.SCISSORS) && player1.equals(Hand.PAPER)
                 || player2.equals(Hand.PAPER) && player1.equals(Hand.ROCK)
@@ -122,7 +122,7 @@ public class Game {
 
     }
 
-    //Pretty self-explanatory
+    //UDSKRIVER RESULTATET
     public void displayResult() {
         ui.printString("Your score: " + human.getPoint() + " AI score: " + AI.getPoint());
     }
