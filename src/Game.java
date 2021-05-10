@@ -1,9 +1,14 @@
 public class Game {
     UI ui = new UI();
-    Player AI = new Computer();
-    Player human = new Human();
+    Player player1;
+    Player player2;
     Menu menu = new Menu();
     Statistics stats = new Statistics();
+
+    public Game(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
+    }
 
     public void run() {
         ui.ANSI_BLUE("Welcome to Rock Paper scissors");
@@ -38,22 +43,22 @@ public class Game {
         }
     }
 
-//SÆTTER SPILLET I GANG
+    //SÆTTER SPILLET I GANG
     public void playGame() {
         boolean run = true;
         ui.printString("First to get 3 points, win!");
         do {
             menu.choiceMenu();
             //Player gets Hand move
-            Hand player1 = getHand(human.takeTurn());
+            Hand player1 = getHand(this.player1.takeTurn());
 
             while (player1 == null) {
-                player1 = getHand(human.takeTurn());
+                player1 = getHand(this.player1.takeTurn());
             }
-            Hand player2 = getHand(AI.takeTurn());
+            Hand player2 = getHand(this.player2.takeTurn());
             while (player2 == null) {
                 //AI randomizes move
-                player2 = getHand(AI.takeTurn());
+                player2 = getHand(this.player2.takeTurn());
             }
 
             stats.countUsedHand(player1);
@@ -61,7 +66,7 @@ public class Game {
 
             //AI plays string but player plays Hand???
             playRound(player1, player2);
-            if (AI.getPoint() == 3 || human.getPoint() == 3) {
+            if (this.player2.getPoint() == 3 || this.player1.getPoint() == 3) {
                 run = false;
             }
         }
@@ -75,19 +80,21 @@ public class Game {
 
     //FINDER EN VINDER
     public void checkWinner() {
-        if (AI.getPoint() == 3) {
+        if (player2.getPoint() == 3) {
             ui.printString("AI won ");
 
         } else {
             ui.printString("You won!");
         }
     }
-//RESETTER SPILLET TIL NÆSTE RUNDE
+
+    //RESETTER SPILLET TIL NÆSTE RUNDE
     public void resetPoints() {
-        human.resetPoints();
-        AI.resetPoints();
+        player1.resetPoints();
+        player2.resetPoints();
     }
-//SØRGER FOR AT SPILLERNE HAR HVER DERES TUR
+
+    //SØRGER FOR AT SPILLERNE HAR HVER DERES TUR
     public void playRound(Hand player1, Hand player2) {
         if (player2.equals(Hand.SCISSORS) && player1.equals(Hand.PAPER)
                 || player2.equals(Hand.PAPER) && player1.equals(Hand.ROCK)
@@ -96,7 +103,7 @@ public class Game {
             ui.printString("Your move: " + player1 + "\nAI move: " + player2);
             ui.ANSI_RED("AI wins the round");
             ui.printString("----------------------------------------");
-            AI.addPoint();
+            this.player2.addPoint();
 
         } else if (player1.equals(player2)) {
             ui.printString("----------------------------------------");
@@ -109,14 +116,14 @@ public class Game {
             ui.ANSI_RED("All the Jedi have been executed");
             ui.ANSI_GREEN("You win the round");
             ui.printString("----------------------------------------");
-            human.addPoint();
+            this.player1.addPoint();
 
         } else {
             ui.printString("----------------------------------------");
             ui.printString("Your move: " + player1 + "\nAI move: " + player2 + "\n");
             ui.ANSI_GREEN("You win the round");
             ui.printString("----------------------------------------");
-            human.addPoint();
+            this.player1.addPoint();
         }
         displayResult();
 
@@ -124,7 +131,7 @@ public class Game {
 
     //UDSKRIVER RESULTATET
     public void displayResult() {
-        ui.printString("Your score: " + human.getPoint() + " AI score: " + AI.getPoint());
+        ui.printString("Your score: " + player1.getPoint() + " AI score: " + player2.getPoint());
     }
 
     //Converts the takeTurn from string to type Hand
